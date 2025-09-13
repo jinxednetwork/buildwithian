@@ -1,0 +1,26 @@
+[
+  {
+    "id": "design-systems-workshop",
+    "title": "Building Design Systems for Startups",
+    "date": "2024-09-15",
+    "description": "Learn how to create scalable design systems from scratch",
+    "status": "Open",
+    "registrationLink": "https://tally.so/r/design-systems"
+  },
+  {
+    "id": "indie-hacker-branding",
+    "title": "Indie Hacker Branding Masterclass",
+    "date": "2024-09-28",
+    "description": "Build a memorable brand as a solo entrepreneur",
+    "status": "Open",
+    "registrationLink": "https://tally.so/r/branding-masterclass"
+  },
+  {
+    "id": "ai-creative-workflow",
+    "title": "AI in Creative Workflows",
+    "date": "2024-10-12",
+    "description": "Integrating AI tools into your design process",
+    "status": "Coming Soon",
+    "registrationLink": "#"
+  }
+]

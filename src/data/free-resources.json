@@ -1,0 +1,68 @@
+[
+  {
+    "id": "design-system-starter",
+    "title": "Design System Starter Kit",
+    "description": "Complete Figma template with components, tokens, and documentation",
+    "category": "Design Templates",
+    "type": "Figma Template",
+    "downloadCount": "2.3K",
+    "downloadLink": "https://figma.com/@ianalmeida/design-system-starter",
+    "previewImage": "/assets/resources/design-system-preview.jpg",
+    "tags": ["Figma", "Design Systems", "Components"]
+  },
+  {
+    "id": "indie-hacker-toolkit",
+    "title": "Indie Hacker Toolkit",
+    "description": "Curated list of 50+ tools for solo entrepreneurs and indie makers",
+    "category": "Business Tools",
+    "type": "PDF Guide",
+    "downloadCount": "1.8K",
+    "downloadLink": "https://drive.google.com/file/indie-hacker-toolkit",
+    "previewImage": "/assets/resources/toolkit-preview.jpg",
+    "tags": ["Tools", "Entrepreneurship", "Productivity"]
+  },
+  {
+    "id": "mumbai-startup-guide",
+    "title": "Mumbai Startup Scene Guide",
+    "description": "Complete guide to funding, co-working spaces, and networking in Mumbai",
+    "category": "Learning Resources",
+    "type": "Interactive Guide",
+    "downloadCount": "956",
+    "downloadLink": "https://notion.so/mumbai-startup-guide",
+    "previewImage": "/assets/resources/mumbai-guide-preview.jpg",
+    "tags": ["Mumbai", "Startups", "Networking"]
+  },
+  {
+    "id": "ai-prompts-designers",
+    "title": "AI Prompts for Designers",
+    "description": "100+ tested prompts for ChatGPT, Midjourney, and other AI tools",
+    "category": "Design Templates", 
+    "type": "Notion Database",
+    "downloadCount": "3.1K",
+    "downloadLink": "https://notion.so/ai-prompts-designers",
+    "previewImage": "/assets/resources/ai-prompts-preview.jpg",
+    "tags": ["AI", "Prompts", "Design", "ChatGPT"]
+  },
+  {
+    "id": "content-calendar-template",
+    "title": "Content Calendar Template",
+    "description": "Airtable template for planning and tracking content across platforms",
+    "category": "Business Tools",
+    "type": "Airtable Template",
+    "downloadCount": "1.4K", 
+    "downloadLink": "https://airtable.com/content-calendar-template",
+    "previewImage": "/assets/resources/content-calendar-preview.jpg",
+    "tags": ["Content", "Planning", "Social Media"]
+  },
+  {
+    "id": "pitch-deck-template",
+    "title": "Startup Pitch Deck Template",
+    "description": "Clean, modern pitch deck template that secured $500K+ in funding",
+    "category": "Business Tools",
+    "type": "Figma Template",
+    "downloadCount": "2.7K",
+    "downloadLink": "https://figma.com/@ianalmeida/pitch-deck-template", 
+    "previewImage": "/assets/resources/pitch-deck-preview.jpg",
+    "tags": ["Pitch Deck", "Fundraising", "Templates"]
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "image": "https://via.placeholder.com/400x400/FFFF00/000000?text=Design+Systems",
+    "caption": "Building scalable design systems that actually work for growing teams 🎯",
+    "likes": 247,
+    "postUrl": "https://www.instagram.com/p/example1/",
+    "publishedAt": "2024-08-30T10:00:00Z"
+  },
+  {
+    "id": "2", 
+    "image": "https://via.placeholder.com/400x400/000000/FFFF00?text=Mumbai+Scene",
+    "caption": "Mumbai startup scene is 🔥 The energy here is unmatched",
+    "likes": 189,
+    "postUrl": "https://www.instagram.com/p/example2/",
+    "publishedAt": "2024-08-29T14:30:00Z"
+  },
+  {
+    "id": "3",
+    "image": "https://via.placeholder.com/400x400/333333/FFFFFF?text=AI+Tools",
+    "caption": "Latest AI tools I'm testing for creative workflows",
+    "likes": 312,
+    "postUrl": "https://www.instagram.com/p/example3/",
+    "publishedAt": "2024-08-28T16:45:00Z"
+  },
+  {
+    "id": "4",
+    "image": "https://via.placeholder.com/400x400/FFFF00/000000?text=Workshop+Prep",
+    "caption": "Preparing for next week's design systems workshop 📚",
+    "likes": 156,
+    "postUrl": "https://www.instagram.com/p/example4/",
+    "publishedAt": "2024-08-27T09:15:00Z"
+  },
+  {
+    "id": "5",
+    "image": "https://via.placeholder.com/400x400/000000/FFFF00?text=Co-founder+Search",
+    "caption": "Looking for technical co-founders to build the future 🚀",
+    "likes": 203,
+    "postUrl": "https://www.instagram.com/p/example5/",
+    "publishedAt": "2024-08-26T11:20:00Z"
+  },
+  {
+    "id": "6",
+    "image": "https://via.placeholder.com/400x400/666666/FFFFFF?text=Behind+Scenes",
+    "caption": "Behind the scenes of building three companies simultaneously",
+    "likes": 275,
+    "postUrl": "https://www.instagram.com/p/example6/",
+    "publishedAt": "2024-08-25T13:40:00Z"
+  }
+]

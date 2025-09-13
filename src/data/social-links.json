@@ -1,0 +1,17 @@
+[
+  {
+    "name": "LinkedIn",
+    "url": "https://linkedin.com/in/ianalmeida",
+    "icon": "linkedin"
+  },
+  {
+    "name": "Instagram", 
+    "url": "https://instagram.com/ian.almeida",
+    "icon": "instagram"
+  },
+  {
+    "name": "YouTube",
+    "url": "https://youtube.com/@ianalmeida",
+    "icon": "youtube"
+  }
+]

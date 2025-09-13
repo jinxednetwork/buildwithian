@@ -1,0 +1,29 @@
+[
+  {
+    "id": "jinxed-network-growth",
+    "projectName": "Jinxed Network",
+    "currentFocus": "Community Expansion",
+    "status": "scaling",
+    "progress": 75,
+    "milestone": "10K creators by Q2",
+    "lastUpdated": "2024-08-30"
+  },
+  {
+    "id": "video-company-ai",
+    "projectName": "A Video Company",
+    "currentFocus": "AI Video Tools Integration",
+    "status": "developing",
+    "progress": 45,
+    "milestone": "Beta release in 6 weeks",
+    "lastUpdated": "2024-08-28"
+  },
+  {
+    "id": "bombay-ai-partnerships",
+    "projectName": "Bombay AI Company",
+    "currentFocus": "Enterprise Partnerships",
+    "status": "active",
+    "progress": 60,
+    "milestone": "5 enterprise clients",
+    "lastUpdated": "2024-08-31"
+  }
+]

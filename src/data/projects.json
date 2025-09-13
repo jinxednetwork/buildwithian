@@ -1,0 +1,26 @@
+[
+  {
+    "id": "jinxed-network",
+    "name": "Jinxed Network",
+    "description": "Creative content network and community platform",
+    "tag": "Content",
+    "status": "Live",
+    "link": "https://jinxednetwork.com"
+  },
+  {
+    "id": "video-company",
+    "name": "A Video Company",
+    "description": "Professional video production and content creation",
+    "tag": "Content",
+    "status": "Live",
+    "link": "https://avideocompany.co"
+  },
+  {
+    "id": "bombay-ai",
+    "name": "The Bombay AI Company",
+    "description": "AI solutions and consulting for Mumbai businesses",
+    "tag": "AI",
+    "status": "Live",
+    "link": "https://bombayai.co"
+  }
+]

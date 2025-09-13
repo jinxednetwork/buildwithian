@@ -1,0 +1,72 @@
+[
+  {
+    "id": "techstars",
+    "name": "Techstars",
+    "logo": "/assets/logos/techstars.svg",
+    "category": "accelerator",
+    "relationship": "mentor"
+  },
+  {
+    "id": "ycombinator",
+    "name": "Y Combinator",
+    "logo": "/assets/logos/ycombinator.svg", 
+    "category": "accelerator",
+    "relationship": "speaker"
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "logo": "/assets/logos/google.svg",
+    "category": "tech",
+    "relationship": "workshop"
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "logo": "/assets/logos/microsoft.svg",
+    "category": "tech", 
+    "relationship": "partner"
+  },
+  {
+    "id": "adobe",
+    "name": "Adobe",
+    "logo": "/assets/logos/adobe.svg",
+    "category": "design",
+    "relationship": "featured"
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "logo": "/assets/logos/figma.svg",
+    "category": "design",
+    "relationship": "community"
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "logo": "/assets/logos/notion.svg",
+    "category": "productivity",
+    "relationship": "ambassador"
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "logo": "/assets/logos/stripe.svg",
+    "category": "fintech",
+    "relationship": "client"
+  },
+  {
+    "id": "aws",
+    "name": "AWS",
+    "logo": "/assets/logos/aws.svg",
+    "category": "cloud",
+    "relationship": "workshop"
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "logo": "/assets/logos/vercel.svg",
+    "category": "hosting",
+    "relationship": "partner"
+  }
+]

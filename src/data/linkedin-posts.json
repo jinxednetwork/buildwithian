@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "content": "Just shipped a major update to our design system at Jinxed Network. The new component library reduced development time by 40%. Here's what we learned building scalable design foundations for a growing creative team...",
+    "fullContent": "Just shipped a major update to our design system at Jinxed Network. The new component library reduced development time by 40%. Here's what we learned building scalable design foundations for a growing creative team:\n\n✅ Start with atomic components\n✅ Document everything (seriously, everything)\n✅ Get buy-in from developers early\n✅ Test with real projects, not just demos\n\nThe hardest part? Getting everyone to actually use it. Culture beats tooling every time.\n\nWhat's your biggest challenge with design systems? Drop it in the comments 👇",
+    "likes": 89,
+    "comments": 12,
+    "shares": 5,
+    "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:example1/",
+    "publishedAt": "2024-08-30T08:00:00Z",
+    "author": {
+      "name": "Ian Almeida",
+      "title": "Designer, Indie-Hacker, Builder"
+    }
+  },
+  {
+    "id": "2",
+    "content": "Mumbai's startup ecosystem is having a moment. Just attended three pitch events this week and the quality of ideas is incredible. From AI-powered logistics to creative tech platforms, founders here are solving real problems with global potential...",
+    "fullContent": "Mumbai's startup ecosystem is having a moment. Just attended three pitch events this week and the quality of ideas is incredible. From AI-powered logistics to creative tech platforms, founders here are solving real problems with global potential.\n\nWhat struck me:\n• Access to talent is no longer the bottleneck\n• International funding is more accessible\n• Local market insights drive innovation\n• Community support is stronger than ever\n\nIf you're building something interesting in Mumbai (or thinking about it), let's connect. Always excited to meet fellow builders and potentially collaborate.\n\n#MumbaiStartups #Entrepreneurship #IndieHacker",
+    "likes": 156,
+    "comments": 24,
+    "shares": 18,
+    "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:example2/",
+    "publishedAt": "2024-08-28T12:30:00Z",
+    "author": {
+      "name": "Ian Almeida",
+      "title": "Designer, Indie-Hacker, Builder"
+    }
+  },
+  {
+    "id": "3",
+    "content": "AI is changing creative work faster than we can adapt. But here's the thing - it's not replacing creativity, it's amplifying it. Spent the last month integrating AI tools into our design workflow at A Video Company...",
+    "fullContent": "AI is changing creative work faster than we can adapt. But here's the thing - it's not replacing creativity, it's amplifying it.\n\nSpent the last month integrating AI tools into our design workflow at A Video Company. Results:\n\n⚡ 3x faster concept iteration\n⚡ More time for strategic thinking\n⚡ Clients getting better outcomes\n⚡ Team learning new skills daily\n\nThe key? Don't try to replace human judgment. Use AI for the heavy lifting so you can focus on the creative decisions that matter.\n\nNext week I'm running a workshop on AI in creative workflows. Link in comments if you're interested.\n\n#AIDesign #CreativeTech #FutureOfWork",
+    "likes": 203,
+    "comments": 31,
+    "shares": 22,
+    "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:example3/",
+    "publishedAt": "2024-08-26T15:45:00Z",
+    "author": {
+      "name": "Ian Almeida",
+      "title": "Designer, Indie-Hacker, Builder"
+    }
+  }
+]

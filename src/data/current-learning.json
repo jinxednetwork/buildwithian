@@ -1,0 +1,29 @@
+[
+  {
+    "id": "advanced-ai-design",
+    "title": "Advanced AI in Design Systems",
+    "description": "Exploring how AI can automate and enhance design system creation",
+    "progress": 65,
+    "timeline": "6 weeks",
+    "platform": "Personal Research",
+    "status": "active"
+  },
+  {
+    "id": "blockchain-creative",
+    "title": "Web3 for Creative Entrepreneurs",
+    "description": "Understanding NFTs, DAOs, and decentralized creative economies",
+    "progress": 40,
+    "timeline": "8 weeks",
+    "platform": "Online Course",
+    "status": "active"
+  },
+  {
+    "id": "mumbai-startup-ecosystem",
+    "title": "Mumbai Startup Ecosystem Analysis",
+    "description": "Deep dive into local funding patterns and success stories",
+    "progress": 80,
+    "timeline": "4 weeks",
+    "platform": "Field Research",
+    "status": "finishing"
+  }
+]

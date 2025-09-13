@@ -1,0 +1,30 @@
+[
+  {
+    "id": "design-experiments",
+    "title": "Design Experiments",
+    "description": "Daily UI challenges and creative explorations",
+    "status": "Live",
+    "link": "https://dribbble.com/ianalmeida"
+  },
+  {
+    "id": "mumbai-startup-scene",
+    "title": "Mumbai Startup Scene",
+    "description": "Documenting the local entrepreneur ecosystem",
+    "status": "Live",
+    "link": "#"
+  },
+  {
+    "id": "indie-maker-tools",
+    "title": "Indie Maker Tools",
+    "description": "Curated list of resources for solo entrepreneurs",
+    "status": "Paused",
+    "link": "#"
+  },
+  {
+    "id": "creative-automation",
+    "title": "Creative Automation",
+    "description": "Automating repetitive design and content tasks",
+    "status": "Archived",
+    "link": "#"
+  }
+]
