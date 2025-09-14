@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { StructuredData } from "@/components/structured-data";
+import { Navigation } from "@/components/navigation";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -70,6 +71,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navigation />
           {children}
         </ThemeProvider>
       </body>
