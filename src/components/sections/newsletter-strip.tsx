@@ -111,9 +111,9 @@ export function NewsletterStrip() {
 
                   {/* Recent Topic Preview */}
                   <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Last week's topic:</p>
+                    <p className="text-sm text-gray-400 mb-2">Last week&apos;s topic:</p>
                     <p className="text-sm font-medium text-electric-yellow">
-                      "How I used AI to 10x my design workflow"
+                      &ldquo;How I used AI to 10x my design workflow&rdquo;
                     </p>
                   </div>
                 </div>

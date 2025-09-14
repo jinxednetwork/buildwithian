@@ -15,7 +15,7 @@ export function SocialFeedsSection() {
             Live Feed
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            What I'm Sharing
+            What I&apos;m Sharing
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Follow my journey across platforms - from design insights on Instagram to business thoughts on LinkedIn, 

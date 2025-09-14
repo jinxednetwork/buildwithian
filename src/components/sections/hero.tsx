@@ -88,7 +88,7 @@ export function HeroSection() {
             <div className="space-y-4">
               <div className="text-center lg:text-left">
                 <h2 className="text-lg font-semibold mb-4 text-muted-foreground">
-                  What I'm up to right now
+                  What I&apos;m up to right now
                 </h2>
               </div>
               <DynamicInfoCards />

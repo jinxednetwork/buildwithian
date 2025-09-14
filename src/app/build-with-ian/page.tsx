@@ -4,12 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import {
-  Bot,
-  Brain,
-  Code,
-  Zap,
-  Users,
-  Star,
   ArrowRight,
   CheckCircle
 } from "lucide-react";
@@ -33,47 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-const features = [
-  {
-    icon: Bot,
-    title: "AI Agent Mastery",
-    description: "Learn to build autonomous AI agents that can perform complex tasks and workflows"
-  },
-  {
-    icon: Brain,
-    title: "Deep AI Understanding",
-    description: "Understand how AI models work and how to leverage them effectively in your projects"
-  },
-  {
-    icon: Code,
-    title: "Hands-on Building",
-    description: "Build real AI applications with practical, project-based learning approach"
-  },
-  {
-    icon: Zap,
-    title: "Cutting-edge Tools",
-    description: "Stay updated with the latest AI tools, frameworks, and best practices"
-  },
-  {
-    icon: Users,
-    title: "Exclusive Community",
-    description: "Join a curated group of builders and creators working on AI projects"
-  },
-  {
-    icon: Star,
-    title: "Direct Access",
-    description: "Get direct access to Ian for feedback, guidance, and collaboration opportunities"
-  }
-];
-
-const learningPath = [
-  "AI Fundamentals & Core Concepts",
-  "Building Your First AI Agent",
-  "Advanced Agent Architectures",
-  "Integration & Automation",
-  "Scaling & Production Deployment",
-  "Community Projects & Collaboration"
-];
 
 export default function BuildWithIanPage() {
   return (

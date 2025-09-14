@@ -51,7 +51,7 @@ export function FreeResourcesSection() {
             Tools & Templates for Builders
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Everything I've learned building multiple companies, distilled into actionable resources. 
+            Everything I&apos;ve learned building multiple companies, distilled into actionable resources. 
             Downloaded by 10,000+ entrepreneurs worldwide.
           </p>
         </div>

@@ -15,7 +15,7 @@ export function ContactSection() {
               Book a Call
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have a project or idea worth talking about? Let's discuss how we can work together 
+              Have a project or idea worth talking about? Let&apos;s discuss how we can work together 
               to bring your vision to life.
             </p>
             

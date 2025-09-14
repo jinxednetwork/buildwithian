@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Heart, ExternalLink, Instagram } from "lucide-react"
+import Image from "next/image"
 import instagramPosts from "@/data/instagram-posts.json"
 
 export function InstagramFeed() {
@@ -53,9 +54,11 @@ export function InstagramFeed() {
           <Card key={post.id} className="group overflow-hidden hover:shadow-md transition-all duration-300">
             <CardContent className="p-0 relative">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image
                   src={post.image}
                   alt={formatCaption(post.caption, 100)}
+                  width={300}
+                  height={300}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 

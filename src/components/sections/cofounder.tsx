@@ -31,11 +31,11 @@ export function CofounderSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Let's Build Something Together
+            Let&apos;s Build Something Together
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            I'm always looking for exceptional co-founders to build the next generation of creative tech companies. 
-            If you're driven, skilled, and ready to create something extraordinary, let's talk.
+            I&apos;m always looking for exceptional co-founders to build the next generation of creative tech companies.
+            If you&apos;re driven, skilled, and ready to create something extraordinary, let&apos;s talk.
           </p>
         </div>
 
@@ -92,7 +92,7 @@ export function CofounderSection() {
               Ready to Change the Game?
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Applications reviewed weekly. Serious inquiries only – let's build something that matters.
+              Applications reviewed weekly. Serious inquiries only – let&apos;s build something that matters.
             </p>
             
             <Button 
