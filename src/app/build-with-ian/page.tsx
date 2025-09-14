@@ -9,12 +9,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Build with Ian - AI Agent Community Waitlist",
-  description: "Join the exclusive community where I teach AI and building AI Agents. Learn to build intelligent automation, chatbots, and AI-powered tools.",
-  keywords: ["AI Agents", "AI Community", "Learn AI", "Build AI", "Ian Almeida", "AI Education", "Machine Learning"],
+  title: "Build with Ian - AI Agent Community Waitlist | Learn AI from Mumbai Expert",
+  description: "Join 50 founding members learning to build AI agents with Ian Almeida. Exclusive community teaching intelligent automation, chatbots, and AI-powered tools. Early access Q2 2025.",
+  keywords: ["Build with Ian", "AI Agents Training", "AI Community Mumbai", "Learn AI Agents", "AI Education India", "Machine Learning Workshop", "Ian Almeida AI", "Chatbot Development", "AI Automation Course"],
   openGraph: {
-    title: "Build with Ian - AI Agent Community Waitlist",
-    description: "Join the exclusive community where I teach AI and building AI Agents. Learn to build intelligent automation, chatbots, and AI-powered tools.",
+    title: "Build with Ian - AI Agent Community Waitlist | Learn AI from Mumbai Expert",
+    description: "Join 50 founding members learning to build AI agents with Ian Almeida. Exclusive community teaching intelligent automation, chatbots, and AI-powered tools. Early access Q2 2025.",
     url: "https://ianalmeida.com/build-with-ian",
     images: [
       {
@@ -28,7 +28,13 @@ export const metadata: Metadata = {
 };
 
 
-export default function BuildWithIanPage() {
+export default function BuildWithIanPage({
+  searchParams,
+}: {
+  searchParams: { success?: string }
+}) {
+  const isSuccess = searchParams?.success === 'true'
+
   return (
     <div className="h-screen flex items-center justify-center bg-background px-6">
       <div className="max-w-2xl mx-auto text-center">
@@ -46,39 +52,64 @@ export default function BuildWithIanPage() {
           that actually work.
         </p>
 
-        {/* Waitlist Form */}
+        {/* Success Message or Waitlist Form */}
         <Card className="p-8 max-w-md mx-auto mb-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Join the Waitlist</h3>
-            <p className="text-muted-foreground">
-              Be the first to know when we launch and get exclusive early access.
-            </p>
+            {isSuccess ? (
+              <>
+                <div className="text-center">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-green-600">You&apos;re In!</h3>
+                  <p className="text-muted-foreground mt-2">
+                    Welcome to the Build with Ian community! Check your email for confirmation and exclusive updates.
+                  </p>
+                  <Button
+                    className="mt-4 bg-electric-yellow text-electric-yellow-foreground hover:bg-electric-yellow/90"
+                    onClick={() => window.location.href = '/build-with-ian'}
+                  >
+                    Join Another Friend
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h3 className="text-2xl font-bold">Join the Waitlist</h3>
+                <p className="text-muted-foreground">
+                  Be the first to know when we launch and get exclusive early access.
+                </p>
 
-            <form className="space-y-4" action="#" method="POST">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full"
-                required
-              />
-              <Input
-                type="text"
-                placeholder="Your name"
-                className="w-full"
-                required
-              />
-              <Button
-                type="submit"
-                className="w-full bg-foreground text-background hover:bg-foreground/90"
-              >
-                Join Waitlist
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </form>
+                <form className="space-y-4" action="https://formspree.io/f/xqadjool" method="POST">
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="w-full"
+                    required
+                  />
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    className="w-full"
+                    required
+                  />
+                  <input type="hidden" name="_subject" value="Build with Ian Waitlist Signup" />
+                  <input type="hidden" name="_next" value="https://ianalmeida.com/build-with-ian?success=true" />
+                  <input type="text" name="_gotcha" style={{display: "none"}} />
+                  <Button
+                    type="submit"
+                    className="w-full bg-foreground text-background hover:bg-foreground/90"
+                  >
+                    Join Waitlist
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </form>
 
-            <p className="text-sm text-muted-foreground">
-              💌 No spam, just exclusive updates and early access
-            </p>
+                <p className="text-sm text-muted-foreground">
+                  💌 No spam, just exclusive updates and early access
+                </p>
+              </>
+            )}
           </div>
         </Card>
 

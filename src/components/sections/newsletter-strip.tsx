@@ -84,18 +84,21 @@ export function NewsletterStrip() {
                 {/* Right Side - Signup Form */}
                 <div className="space-y-6">
                   <div className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-                    <div className="space-y-4">
+                    <form action="https://formspree.io/f/xqadjool" method="POST" className="space-y-4">
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
                           Join 2,400+ creative entrepreneurs
                         </label>
                         <div className="flex space-x-3">
-                          <Input 
-                            type="email" 
+                          <Input
+                            type="email"
+                            name="email"
                             placeholder="your@email.com"
                             className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-electric-yellow"
+                            required
                           />
-                          <Button 
+                          <Button
+                            type="submit"
                             size="lg"
                             className="bg-electric-yellow text-black hover:bg-electric-yellow/90 font-semibold px-8"
                           >
@@ -103,10 +106,13 @@ export function NewsletterStrip() {
                           </Button>
                         </div>
                       </div>
+                      <input type="hidden" name="_subject" value="Newsletter Signup" />
+                      <input type="hidden" name="_next" value="https://ianalmeida.com?newsletter=success" />
+                      <input type="text" name="_gotcha" style={{display: "none"}} />
                       <p className="text-xs text-gray-400">
                         Free forever. Unsubscribe anytime. No spam, ever.
                       </p>
-                    </div>
+                    </form>
                   </div>
 
                   {/* Recent Topic Preview */}

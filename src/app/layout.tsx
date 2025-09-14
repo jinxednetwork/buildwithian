@@ -11,14 +11,17 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Ian Almeida - Designer, Indie-Hacker, Builder",
-  description: "Personal website of Ian Almeida - Designer, Indie-Hacker, and Builder of Cool Sh*t from Mumbai. Co-founder opportunities, workshops, and speaking engagements available.",
-  keywords: ["Ian Almeida", "Designer", "Indie Hacker", "Mumbai", "Entrepreneur", "Speaker", "Co-founder", "Workshops", "AI", "Creative Technology"],
+  title: {
+    default: "Ian Almeida - Designer, Indie-Hacker & AI Builder from Mumbai",
+    template: "%s | Ian Almeida"
+  },
+  description: "Creative technologist from Mumbai building AI-powered ventures. Designer, indie-hacker, and entrepreneur offering co-founder opportunities, AI workshops, and speaking engagements. Join 2400+ entrepreneurs following my journey.",
+  keywords: ["Ian Almeida", "Designer Mumbai", "AI Builder", "Indie Hacker India", "Creative Technologist", "Entrepreneur Mumbai", "AI Workshops", "Co-founder Opportunities", "Speaking Engagements", "Creative Technology", "Design Systems", "Jinxed Network"],
   authors: [{ name: "Ian Almeida" }],
   creator: "Ian Almeida",
   openGraph: {
-    title: "Ian Almeida - Designer, Indie-Hacker, Builder",
-    description: "Creative technologist from Mumbai building ventures at the intersection of design, AI, and content.",
+    title: "Ian Almeida - Designer, Indie-Hacker & AI Builder from Mumbai",
+    description: "Creative technologist from Mumbai building AI-powered ventures. Designer, indie-hacker, and entrepreneur offering co-founder opportunities, AI workshops, and speaking engagements.",
     url: "https://ianalmeida.com",
     siteName: "Ian Almeida",
     images: [
@@ -34,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ian Almeida - Designer, Indie-Hacker, Builder",
-    description: "Creative technologist from Mumbai building ventures at the intersection of design, AI, and content.",
+    title: "Ian Almeida - Designer, Indie-Hacker & AI Builder from Mumbai",
+    description: "Creative technologist from Mumbai building AI-powered ventures. Designer, indie-hacker, and entrepreneur offering co-founder opportunities, AI workshops, and speaking engagements.",
     images: ["/assets/profile.jpg"],
   },
   robots: {
@@ -67,7 +70,7 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
