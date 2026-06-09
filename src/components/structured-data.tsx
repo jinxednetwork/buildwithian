@@ -94,25 +94,6 @@ export function StructuredData() {
     ]
   }
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://ianalmeida.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Build with Ian",
-        "item": "https://ianalmeida.com/build-with-ian"
-      }
-    ]
-  }
-
   return (
     <>
       <script
@@ -131,12 +112,6 @@ export function StructuredData() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(organizationSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
         }}
       />
     </>
