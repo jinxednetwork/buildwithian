@@ -9,6 +9,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ianalmeida.com"),
   title: {
     default: "Ian Almeida - Designer, Indie-Hacker & AI Builder from Mumbai",
     template: "%s | Ian Almeida"

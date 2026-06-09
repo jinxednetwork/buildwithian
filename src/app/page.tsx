@@ -1,4 +1,5 @@
-// Terminal experience is mounted here. Implementation lands in the next commit.
+import { Terminal } from "@/components/terminal/Terminal";
+
 export default function Home() {
-  return <main />;
+  return <Terminal />;
 }

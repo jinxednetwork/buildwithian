@@ -265,11 +265,12 @@
   background: transparent;
   border: none;
   outline: none;
-  color: var(--ink);
+  /* text is shown by the .render mirror + custom .caret block, so the field
+     itself stays visually empty (no duplicated text, no native caret) */
+  color: transparent;
   font-family: var(--mono);
   font-size: 14px;
   caret-color: transparent;
-  /* keep a real focus affordance for keyboard users on the field's caret block */
 }
 .input:focus-visible {
   outline: none;
