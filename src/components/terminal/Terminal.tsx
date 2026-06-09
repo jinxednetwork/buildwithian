@@ -8,10 +8,14 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import styles from "./terminal.module.css";
 import { IAN } from "./data";
 import { Avatar } from "./Avatar";
 import { TerminalContext } from "./context";
+import { useReducedMotion } from "./useReducedMotion";
+import { flashPrompt, revealBlock } from "./motion";
 import {
   AboutCopy,
   Cmd,
@@ -27,7 +31,7 @@ import { GlyphFire } from "@/components/fx/GlyphFire";
 import { DitherField } from "@/components/fx/DitherField";
 import { Overlays } from "@/components/fx/Overlays";
 
-type Block = { id: number; node: ReactNode };
+type Block = { id: number; node: ReactNode; boot?: boolean };
 
 const M = ({ children }: { children: ReactNode }) => (
   <span className={styles.muted}>{children}</span>
@@ -52,15 +56,34 @@ function Hero() {
   );
 }
 
+/** Wraps each command-output block and reveals it once on mount. */
+function OutputBlock({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  useGSAP(() => {
+    if (reduced || !ref.current) return;
+    revealBlock(ref.current);
+  }, { scope: ref });
+  return (
+    <div ref={ref} data-block>
+      {children}
+    </div>
+  );
+}
+
 export function Terminal() {
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [value, setValue] = useState("");
+  const reduced = useReducedMotion();
 
+  const rootRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const termRef = useRef<HTMLDivElement>(null);
+  const ps1Ref = useRef<HTMLSpanElement>(null);
   const idRef = useRef(0);
   const historyRef = useRef<string[]>([]);
   const hiRef = useRef(0);
+  const bootRanRef = useRef(false);
 
   const nextId = () => ++idRef.current;
 
@@ -82,6 +105,11 @@ export function Terminal() {
     if (cmd === "clear" || cmd === "cls") {
       setBlocks([]);
       return;
+    }
+
+    // a few commands sweep a scanline over any mounted face
+    if (cmd === "whoami" || cmd === "avatar" || cmd === "face") {
+      window.dispatchEvent(new Event("terminal:scan"));
     }
 
     let result: ReactNode = null;
@@ -174,6 +202,7 @@ export function Terminal() {
     if (v.trim()) historyRef.current.push(v);
     hiRef.current = historyRef.current.length;
     setValue("");
+    if (!reduced && ps1Ref.current) flashPrompt(ps1Ref.current);
     run(v);
   };
 
@@ -204,7 +233,7 @@ export function Terminal() {
     }
   };
 
-  // boot sequence (the GSAP motion layer enhances this in the next commit)
+  // populate the boot blocks once (the GSAP timeline below reveals them)
   useEffect(() => {
     const lines = [
       "> system boot sequence",
@@ -214,27 +243,88 @@ export function Terminal() {
     ];
     const initial: Block[] = lines.map((t) => ({
       id: nextId(),
+      boot: true,
       node: (
-        <div className={styles.line}>
+        <div className={styles.line} data-boot-line>
           <M>{t}</M>
         </div>
       ),
     }));
-    initial.push({ id: nextId(), node: <div className={styles.line}>&nbsp;</div> });
-    initial.push({ id: nextId(), node: <Hero /> });
-    initial.push({ id: nextId(), node: <div className={styles.line}>&nbsp;</div> });
+    initial.push({ id: nextId(), boot: true, node: <div className={styles.line}>&nbsp;</div> });
+    initial.push({ id: nextId(), boot: true, node: <Hero /> });
+    initial.push({ id: nextId(), boot: true, node: <div className={styles.line}>&nbsp;</div> });
     initial.push({
       id: nextId(),
+      boot: true,
       node: (
-        <div className={styles.line}>
+        <div className={styles.line} data-boot-tail>
           <M>welcome. this site is a terminal. type a command to explore.</M>
         </div>
       ),
     });
-    initial.push({ id: nextId(), node: <HelpCopy /> });
+    initial.push({
+      id: nextId(),
+      boot: true,
+      node: (
+        <div data-boot-tail>
+          <HelpCopy />
+        </div>
+      ),
+    });
     setBlocks(initial);
     inputRef.current?.focus();
   }, []);
+
+  // boot reveal: type-in lines → hero clip wipe + chromatic glitch → tail stagger
+  useGSAP(
+    () => {
+      if (!rootRef.current || bootRanRef.current || blocks.length === 0) return;
+      bootRanRef.current = true;
+
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+        tl.from("[data-boot-line]", {
+          autoAlpha: 0,
+          y: 4,
+          duration: 0.18,
+          stagger: 0.14,
+        });
+        tl.from("[data-hero]", { autoAlpha: 0, duration: 0.2 }, "+=0.12");
+        tl.fromTo(
+          "[data-hero]",
+          { clipPath: "inset(0 100% 0 0)" },
+          { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power3.out" },
+          "<"
+        );
+        tl.fromTo(
+          "[data-ian]",
+          {
+            textShadow:
+              "2px 0 rgba(255,255,255,0.85), -2px 0 rgba(120,120,120,0.85)",
+            x: -2,
+          },
+          {
+            textShadow:
+              "0px 0 rgba(255,255,255,0), 0px 0 rgba(120,120,120,0)",
+            x: 0,
+            duration: 0.35,
+            ease: "power1.out",
+          },
+          "<0.1"
+        );
+        tl.to("[data-ian]", { x: 2, duration: 0.04, repeat: 3, yoyo: true }, "<");
+        tl.from(
+          "[data-boot-tail]",
+          { autoAlpha: 0, y: 6, duration: 0.22, stagger: 0.12 },
+          "-=0.08"
+        );
+      });
+
+      return () => mm.revert();
+    },
+    { scope: rootRef, dependencies: [blocks] }
+  );
 
   // keep the log pinned to the newest output
   useEffect(() => {
@@ -251,7 +341,7 @@ export function Terminal() {
 
   return (
     <TerminalContext.Provider value={ctx}>
-      <div className={styles.root} onClick={focusInput}>
+      <div className={styles.root} ref={rootRef} onClick={focusInput}>
         <CodeRain className={styles.rain} />
         <GlyphFire className={styles.fire} />
         <Overlays />
@@ -266,15 +356,21 @@ export function Terminal() {
           </div>
 
           <div className={styles.term} ref={termRef} role="log" aria-live="polite">
-            {blocks.map((b) => (
-              <div key={b.id} data-block>
-                {b.node}
-              </div>
-            ))}
+            {blocks.map((b) =>
+              b.boot ? (
+                <div key={b.id} data-block>
+                  {b.node}
+                </div>
+              ) : (
+                <OutputBlock key={b.id}>{b.node}</OutputBlock>
+              )
+            )}
           </div>
 
           <div className={styles.inputrow}>
-            <span className={styles.ps1}>ian@almeida:~$</span>
+            <span className={styles.ps1} ref={ps1Ref}>
+              ian@almeida:~$
+            </span>
             <span className={styles.render}>{value}</span>
             <span className={styles.caret} />
             <input
