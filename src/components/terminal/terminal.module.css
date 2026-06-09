@@ -1,0 +1,352 @@
+/* Terminal experience — co-located styles.
+   Palette lives in CSS variables so it stays themeable; the keyframe-heavy bits
+   (sweep, caret blink, scanline, dot pulse) stay here rather than fighting Tailwind. */
+
+.root {
+  --bg: #050505;
+  --ink: #ededed;
+  --dim: #6f6f6f;
+  --dimmer: #3a3a3a;
+  --glow: rgba(255, 255, 255, 0.55);
+  --mono: var(--font-jetbrains-mono), "SFMono-Regular", ui-monospace,
+    "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.55;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== background canvases + overlays ===== */
+.rain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.16;
+  pointer-events: none;
+}
+.fire {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 240px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.6) 0.5px, transparent 0.6px);
+  background-size: 3px 3px;
+  opacity: 0.045;
+  mix-blend-mode: screen;
+}
+.scan {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.32) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  opacity: 0.4;
+  animation: scanmove 8s linear infinite;
+}
+@keyframes scanmove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100px;
+  }
+}
+.vig {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 38%,
+    transparent 28%,
+    rgba(0, 0, 0, 0.6) 92%
+  );
+}
+
+/* ===== layout ===== */
+.wrap {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+.topbar {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 2px 12px;
+  border-bottom: 1px solid var(--dimmer);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.topbar .glyph {
+  color: var(--ink);
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px var(--glow);
+  margin-right: 7px;
+  vertical-align: middle;
+  animation: pulse 4s infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.term {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 20px 2px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dimmer) transparent;
+}
+.term::-webkit-scrollbar {
+  width: 8px;
+}
+.term::-webkit-scrollbar-thumb {
+  background: var(--dimmer);
+  border-radius: 4px;
+}
+
+/* ===== output lines + inline tokens ===== */
+.line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.muted {
+  color: var(--dim);
+}
+.dimmer {
+  color: var(--dimmer);
+}
+.accent {
+  color: #fff;
+  text-shadow: 0 0 7px var(--glow);
+}
+.link {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid var(--dim);
+}
+.link:hover {
+  text-shadow: 0 0 8px var(--glow);
+  border-bottom-color: #fff;
+}
+.cmdEcho {
+  color: #fff;
+  text-shadow: 0 0 6px var(--glow);
+}
+
+.sweep {
+  font-weight: 600;
+  background: linear-gradient(
+    100deg,
+    #5a5a5a 0%,
+    #5a5a5a 35%,
+    #ffffff 50%,
+    #5a5a5a 65%,
+    #5a5a5a 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sweep 4.5s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
+}
+@keyframes sweep {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+
+/* ===== hero ===== */
+.hero {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 6px 0 4px;
+}
+.avatar {
+  color: #d6d6d6;
+  font-size: 7px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  white-space: pre;
+  display: inline-block;
+  will-change: transform;
+}
+.ian {
+  white-space: pre;
+  font-size: 13px;
+  line-height: 1;
+}
+.ian .sweep {
+  font-weight: 400;
+}
+.tag {
+  color: var(--dim);
+  margin-top: 6px;
+}
+
+/* clickable command words */
+.k {
+  color: #fff;
+  cursor: pointer;
+}
+.k:hover {
+  text-shadow: 0 0 8px var(--glow);
+}
+
+/* ===== input row ===== */
+.inputrow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 12px 2px 18px;
+  border-top: 1px solid var(--dimmer);
+}
+.ps1 {
+  color: #fff;
+  text-shadow: 0 0 6px var(--glow);
+  margin-right: 10px;
+  white-space: nowrap;
+}
+.render {
+  white-space: pre;
+}
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 14px;
+  caret-color: transparent;
+  /* keep a real focus affordance for keyboard users on the field's caret block */
+}
+.input:focus-visible {
+  outline: none;
+}
+.caret {
+  display: inline-block;
+  width: 9px;
+  height: 16px;
+  background: #fff;
+  box-shadow: 0 0 8px var(--glow);
+  margin-left: -2px;
+  animation: cbl 1s steps(1) infinite;
+  vertical-align: middle;
+}
+@keyframes cbl {
+  50% {
+    opacity: 0;
+  }
+}
+.hint {
+  color: var(--dim);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+/* dither canvas spawned by the `art` command */
+.dither {
+  image-rendering: pixelated;
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+/* scanline pass swept over the avatar on certain commands (GSAP-driven) */
+.scanPass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22%;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  opacity: 0;
+}
+
+@media (max-width: 680px) {
+  .root {
+    font-size: 12.5px;
+  }
+  .avatar {
+    font-size: 5px;
+  }
+  .ian {
+    font-size: 9px;
+  }
+  .topbar {
+    font-size: 9px;
+  }
+  .fire {
+    height: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep,
+  .scan,
+  .dot,
+  .caret {
+    animation: none;
+  }
+  .sweep {
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+  }
+}
