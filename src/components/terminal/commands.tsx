@@ -51,6 +51,7 @@ export const CMDS = [
   "art",
   "contact",
   "chat",
+  "sound",
   "clear",
   "help",
   "tools",
@@ -164,6 +165,9 @@ export function HelpCopy() {
       {" "}
       <Dim>[msg]</Dim>
       {"  talk to the terminal"}
+      {"\n"}
+      <Cmd>sound</Cmd>
+      {"      mute / unmute the bleeps"}
       {"\n"}
       <Cmd>clear</Cmd>
       {"      wipe the screen"}

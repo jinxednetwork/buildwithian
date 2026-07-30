@@ -9,8 +9,10 @@ import {
   type ReactNode,
 } from "react";
 import gsap from "gsap";
+import { Flip } from "gsap/Flip";
 import { useGSAP } from "@gsap/react";
 import styles from "./terminal.module.css";
+import { sfx } from "./sfx";
 import { IAN } from "./data";
 import { Avatar } from "./Avatar";
 import { TerminalContext } from "./context";
@@ -30,6 +32,8 @@ import { CodeRain } from "@/components/fx/CodeRain";
 import { GlyphFire } from "@/components/fx/GlyphFire";
 import { DitherField } from "@/components/fx/DitherField";
 import { Overlays } from "@/components/fx/Overlays";
+
+gsap.registerPlugin(Flip);
 
 type Block = { id: number; node: ReactNode; boot?: boolean };
 
@@ -84,6 +88,8 @@ export function Terminal() {
   const historyRef = useRef<string[]>([]);
   const hiRef = useRef(0);
   const bootRanRef = useRef(false);
+  const reducedRef = useRef(reduced);
+  reducedRef.current = reduced;
 
   const nextId = () => ++idRef.current;
 
@@ -96,11 +102,38 @@ export function Terminal() {
     </div>
   );
 
+  /**
+   * Collapse the hero into the top-right corner on the first command, giving
+   * its (tall) vertical space back to the log. Driven straight off the DOM
+   * rather than React state: the Hero element lives inside a stored block
+   * node, so React bails on re-rendering it, and Flip is imperative anyway.
+   */
+  const minifyHero = useCallback(() => {
+    const el = rootRef.current?.querySelector<HTMLElement>("[data-hero]");
+    if (!el || el.classList.contains(styles.heroMini)) return;
+
+    if (reducedRef.current) {
+      el.classList.add(styles.heroMini);
+      return;
+    }
+    const state = Flip.getState(el);
+    el.classList.add(styles.heroMini);
+    Flip.from(state, {
+      duration: 0.85,
+      ease: "power3.inOut",
+      scale: true,
+      absolute: true,
+    });
+    sfx.whoosh();
+  }, []);
+
   const run = useCallback((raw: string) => {
     const trimmed = raw.trim();
     const firstTok = trimmed.split(/\s+/)[0] || "";
     const cmd = firstTok.toLowerCase();
     const rest = trimmed.slice(firstTok.length).trim();
+
+    if (cmd !== "") minifyHero();
 
     if (cmd === "clear" || cmd === "cls") {
       setBlocks([]);
@@ -173,6 +206,14 @@ export function Terminal() {
           </div>
         );
         break;
+      case "sound":
+      case "mute":
+        result = (
+          <div className={styles.line}>
+            <M>sound {sfx.toggle() ? "muted" : "on"}</M>
+          </div>
+        );
+        break;
       case "sudo":
         result = (
           <div className={styles.line}>
@@ -195,7 +236,7 @@ export function Terminal() {
       if (result !== null) next.push({ id: nextId(), node: result });
       return next;
     });
-  }, []);
+  }, [minifyHero]);
 
   const submit = () => {
     const v = value;
@@ -203,11 +244,13 @@ export function Terminal() {
     hiRef.current = historyRef.current.length;
     setValue("");
     if (!reduced && ps1Ref.current) flashPrompt(ps1Ref.current);
+    sfx.submit();
     run(v);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const hist = historyRef.current;
+    if (e.key.length === 1 || e.key === "Backspace") sfx.key();
     if (e.key === "Enter") {
       submit();
     } else if (e.key === "ArrowUp") {
@@ -331,6 +374,19 @@ export function Terminal() {
     const el = termRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [blocks]);
+
+  // iOS pins position:fixed to the layout viewport, so 100dvh doesn't shrink
+  // when the keyboard opens and it covers the input row. Track the visual
+  // viewport instead. ponytail: height only — offsetTop drift hasn't bitten us.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const sync = () =>
+      rootRef.current?.style.setProperty("height", `${vv.height}px`);
+    sync();
+    vv.addEventListener("resize", sync);
+    return () => vv.removeEventListener("resize", sync);
+  }, []);
 
   const focusInput = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest("a,[role=button]")) return;

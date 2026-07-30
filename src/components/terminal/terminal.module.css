@@ -234,6 +234,23 @@
   margin-top: 6px;
 }
 
+/* after the first command the hero flies into the top-right corner as a badge,
+   handing its vertical space back to the log (GSAP Flip animates the move) */
+.heroMini {
+  position: fixed;
+  top: 46px;
+  right: 16px;
+  z-index: 8;
+  margin: 0;
+  gap: 10px;
+  transform: scale(0.34);
+  transform-origin: top right;
+  pointer-events: none;
+}
+.heroMini .tag {
+  display: none;
+}
+
 /* clickable command words */
 .k {
   color: #fff;
@@ -246,7 +263,11 @@
 /* ===== input row ===== */
 .inputrow {
   flex: 0 0 auto;
+  /* wraps rather than growing wider than the viewport — an unbreakable row
+     lets the browser scroll the whole shell sideways to chase the caret,
+     which drags the prompt off-screen on narrow screens */
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 12px 2px 18px;
   border-top: 1px solid var(--dimmer);
@@ -258,10 +279,13 @@
   white-space: nowrap;
 }
 .render {
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 .input {
-  flex: 1;
+  flex: 1 1 40px;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;

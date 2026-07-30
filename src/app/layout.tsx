@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StructuredData } from "@/components/structured-data";
@@ -7,6 +7,15 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
+
+// resizes-content shrinks the layout viewport when the on-screen keyboard
+// opens, so the terminal's 100dvh shell keeps its input row above it.
+// Chrome/Android honours this; iOS needs the visualViewport sync in Terminal.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  interactiveWidget: "resizes-content",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ianalmeida.com"),
