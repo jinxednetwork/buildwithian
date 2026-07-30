@@ -12,7 +12,7 @@ function buildFace(blink: boolean): string {
   if (!blink) return FACE.join("\n");
   return FACE.map((row, i) =>
     i >= 12 && i <= 18
-      ? row.replace(/[a-zA-Z0-9*#%@&]/g, (m) => (Math.random() > 0.5 ? m : "-"))
+      ? row.replace(/[^⠀]/g, (m) => (Math.random() > 0.5 ? m : "⠒"))
       : row
   ).join("\n");
 }
